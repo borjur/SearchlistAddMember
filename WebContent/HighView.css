@@ -1,0 +1,40 @@
+body{
+   background-color: #FFFFB5;
+	font-weight: bold;
+}
+
+body.welcome{
+   background-color: #FFFFB5;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-attachment: fixed;
+	font-family: Verdana;
+	font-size: larger;
+	text-align: center;
+}
+
+.error{
+	color: red;
+}
+.warning{
+	color: #00AC01;
+}
+.staticText{
+   color: Blue;
+}
+
+.searchResult {
+   border: thin solid black;
+}
+.searchResultHeader {
+   text-align: center;
+   font-style: italic;
+   color: Snow;
+   background: #DE4E00;
+}
+.oddrow {
+   background: #E8A473;
+}
+.evenrow {
+   background: #E68143;
+}

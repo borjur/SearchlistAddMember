@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?> 
+<!DOCTYPE faces-config PUBLIC
+        "-//Sun Microsystems, Inc.//DTD JSF Config 1.1//EN"
+        "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+		
+<faces-config>
+    <!-- Add the DelegatingVariableResolver-->
+    <application>
+        <variable-resolver>
+            org.springframework.web.jsf.DelegatingVariableResolver
+        </variable-resolver>
+    </application>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>search</from-outcome>
+            <to-view-id>/Search.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/AddMember.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/SearchResults.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/Search.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>found</from-outcome>
+            <to-view-id>/AddMember.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>addNew</from-outcome>
+            <to-view-id>/AddMember.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/SearchResults.jsp</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>memberBean</managed-bean-name>
+        <managed-bean-class>springjsf.controller.MemberBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <!-- add the memberDAO managed-property -->
+        <managed-property>
+            <property-name>memberDAO</property-name>
+            <value>#{MemberDAO}</value>
+        </managed-property>
+    </managed-bean>
+
+</faces-config>

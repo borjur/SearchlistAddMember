@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <bean id="MySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="mappingResources">
+            <list>
+                <value>Member.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--    <prop key="hibernate.current_session_context_class">thread</prop> -->
+            </props>
+        </property>
+
+        <property name="dataSource">
+            <ref bean="highviewDataSource"/>
+        </property>
+    </bean>
+
+    <bean id="highviewDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName">
+            <value>jdbc/HighView</value>
+        </property>
+        <property name="resourceRef">
+            <value>true</value>
+        </property>
+    </bean>
+
+    <bean id="MemberDAO" class="springjsf.model.dao.hibernate.MemberDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="MySessionFactory"/>
+        </property>
+    </bean>
+</beans>

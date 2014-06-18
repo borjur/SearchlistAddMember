@@ -1,0 +1,24 @@
+<?xml version="1.0"?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+		
+<hibernate-mapping>
+    <class name="springjsf.model.MemberTO" table="MEMBER" lazy="false">
+        <id name="id" column="MEMBER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="username" unique="true"/>
+        <property name="email"/>
+        <property name="active"/>
+        <property name="memberSinceDate" type="date"/>
+        <join table="ADDRESS">
+            <key column="MEMBER_ID"/>
+            <property name="street"/>
+            <property name="city"/>
+            <property name="zipCode"/>
+            <property name="region"/>
+            <property name="country"/>
+        </join>
+    </class>
+</hibernate-mapping>
