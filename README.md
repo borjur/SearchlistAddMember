@@ -1,4 +1,4 @@
 SearchlistAddMember
 ===================
 
-Search , List, Add Member using SPRING, JSF, Hibernate
+Search , List, Add Member using SPRING, JSF, Hibernate.
